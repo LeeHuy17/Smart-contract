@@ -1,0 +1,8 @@
+.git
+.deps
+.states
+/artifacts
+/scripts
+/tests
+.prettierrc.json
+remix.config.json
