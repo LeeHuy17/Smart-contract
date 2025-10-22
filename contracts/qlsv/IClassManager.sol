@@ -53,7 +53,4 @@ contract StudentManager {
         classContract.decrementStudent(_className);
     }
 
-
-
-
 }

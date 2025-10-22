@@ -122,11 +122,11 @@
 	},
 	"sources": {
 		"contracts/qlsv/IClassManager.sol": {
-			"keccak256": "0xfb874ec8bcd80b2c90f9d40fb9d0217674e7f00d91cbcf6dad034ff688d25ee2",
+			"keccak256": "0xc7ecbd220b91c2842e0da0ee412437b32825148b1616d21e646ef0c6eca8a54e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e040642366323614ff1d281f61f0ba4483c32caff91d9bfed788b59eba4b7b07",
-				"dweb:/ipfs/QmeptJFd7wUGsjqn39FbZ9v5FGQcyNXaCmWutyknPtUhmH"
+				"bzz-raw://7bc0132441e3ff66519b053a3f4ec4c9a3aac375bccf51e6bd40ad4e855a98c2",
+				"dweb:/ipfs/QmVKNHwpyG8sd4ipXgButcJoGrbrBouRvWGZFUjjJVCB5o"
 			]
 		}
 	},

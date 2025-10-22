@@ -1,34 +1,73 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
-contract ProductManager{
+// ---------------------------
+// Structs
+// ---------------------------
+struct Product {
+    string nameProduct;
+    uint price;
+    uint quantity;
+}
 
-    struct Product {
-        string name;
-        uint amount;
-        uint price;
+struct Order {
+    string nameProduct;
+    uint price;
+    uint quantity;
+}
+
+// ---------------------------
+// Contract quản lý 1 store duy nhất
+// ---------------------------
+contract StoreManager {
+
+    mapping(string => Product) private products;
+
+    string[] private productNames;
+
+    mapping(string => Order[]) private userPurchases;
+
+    function addProduct(string memory _nameProduct, uint _price, uint _quantity) external {
+        Product storage prod = products[_nameProduct];
+
+        if (bytes(prod.nameProduct).length == 0) {
+            products[_nameProduct] = Product(_nameProduct, _price, _quantity);
+            productNames.push(_nameProduct);
+        } else {
+            prod.price = _price;
+            prod.quantity += _quantity;
+        }
     }
 
-    mapping(string => Product) public products;
-
-    function addProduct(string memory _name, uint _amount, uint _price) public {
-        products[_name] = Product(_name, _amount, _price);
+    function getProductInfo(string memory _nameProduct) external view returns (uint price, uint quantity) {
+        Product storage prod = products[_nameProduct];
+        require(bytes(prod.nameProduct).length != 0, "Product not found");
+        return (prod.price, prod.quantity);
     }
 
-    function getProduct(string memory _name) public view returns (string memory, uint, uint) {
-        return (products[_name].name, products[_name].amount, products[_name].price);
+    function getAllProducts() external view returns (Product[] memory) {
+        Product[] memory result = new Product[](productNames.length);
+        for (uint i = 0; i < productNames.length; i++) {
+            result[i] = products[productNames[i]];
+        }
+        return result;
     }
 
-    function isProductExist(string memory _name) public view returns (bool) {
-        return bytes(products[_name].name).length > 0;
+    function buyProduct(string memory _username, string memory _nameProduct, uint _quantity) external {
+        Product storage prod = products[_nameProduct];
+        require(bytes(prod.nameProduct).length != 0, "Product not found");
+        require(prod.quantity >= _quantity, "Not enough quantity");
+
+        prod.quantity -= _quantity;
+
+        userPurchases[_username].push(Order({
+            nameProduct: _nameProduct,
+            price: prod.price,
+            quantity: _quantity
+        }));
     }
 
-    function updateProductPrice(string memory _name, uint _price) public {
-        require(isProductExist(_name), "Product does not exist");
-        require(products[_name].amount > 0, "Product is out of stock");
-        products[_name].price = _price;
-    }    
-
-    
-
+    function getPurchaseHistory(string memory _username) external view returns (Order[] memory) {
+        return userPurchases[_username];
+    }
 }

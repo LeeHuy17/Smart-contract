@@ -155,7 +155,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/bt/StoreManager.sol": "StoreManager"
+			"contracts/bt/StoreManager.sol": "Store"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -170,11 +170,11 @@
 	},
 	"sources": {
 		"contracts/bt/StoreManager.sol": {
-			"keccak256": "0xc7bd62b7c15dc86fbfadf930ce1a2d5eca909d7286c24879773a7a77e2129ed7",
+			"keccak256": "0x25f404b20d82e314f6d70e5fd1d886a334237b0a89a5ac9e9c7c4da5cd198648",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://220b3dafae8bb5b24f7f1b000c4a1abdb0a1b5acd8894caa62321c0ffaae6ca5",
-				"dweb:/ipfs/QmY4aZS8myFYKgRFkN7XFmE4khPXdVFqpeuLpRgXtECCja"
+				"bzz-raw://bbfd10073db34e1345297adf18fd14eef1ee4e148c711d487cce7f078732788a",
+				"dweb:/ipfs/QmRRvTW473hiFqeCHhANfVALWJ7tZ4QmLaaPbQDx6XiArF"
 			]
 		}
 	},
